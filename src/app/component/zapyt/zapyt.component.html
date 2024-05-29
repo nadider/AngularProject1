@@ -1,0 +1,14 @@
+<div class="modal" tabindex="-1" role="dialog" style="display: block">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Ви хочете знищити замітку?</p>
+        <p *ngIf="viewText">{{viewText.title}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" (click)="confirm(true)">Знищити</button>
+        <button type="button" class="btn" (click)="confirm(false)">Відмінити</button>
+      </div>
+    </div>
+  </div>
+</div>

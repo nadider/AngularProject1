@@ -1,0 +1,43 @@
+<div class="container1">
+    <div class="cl1">
+      <p class="text-title">Фільтр по заголовку</p>
+      <input type="text" class="form-control" placeholder="Пошук заголовку замітки" [(ngModel)]="searchTerm" (input)="onSearchTermChange()"/>
+  </div>
+  <br />
+  <button class="btn" (click)="createText()">Нова замітка </button>
+
+  <ul class="list-group">
+    <li *ngFor="let viewText of filteredText" class="list-group-item">
+    <div>
+      <div (click)="selectText(viewText)" class="text-title">
+        <span>{{ viewText.title }}</span> - <span>{{ viewText.content }}</span> 
+      </div>
+      <div class="btn-group">
+        <button class="btn" (click)="editText(viewText)">Редагувати</button>
+        <button class="btn" (click)="enquireDelete(viewText)">Знищити</button>
+      </div>
+    </div>
+    </li>
+  </ul>
+
+  <div class="container2">
+    <app-form
+      *ngIf="isCreating || isEditing"
+      [viewText]="selectedText!"
+      (formSubmitted)="onFormSubmitted()"
+      (cancel)="cancel()"
+    >
+    </app-form>
+  </div>
+
+  <div class="container3">
+    <app-box
+      *ngIf="selectedText && !isCreating && !isEditing"
+      [viewText]="selectedText!"
+      (cancel)="cancel()"
+    >
+    </app-box>
+  </div>
+
+  <app-zapyt *ngIf="isConfirming" (confirmed)="deleteText($event)" [viewText]="textToDelete!"> </app-zapyt>
+</div>

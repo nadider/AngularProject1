@@ -1,0 +1,6 @@
+<h2 class="text-uppercase">{{title}}</h2>
+<div *ngIf="viewText" class="mt-4">
+  <h4>{{ viewText.title }}</h4>
+  <p>{{ viewText.content }}</p>
+  <button class="btn " (click)="onCancel()">Відмінити</button>
+</div>
